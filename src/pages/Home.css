@@ -89,7 +89,9 @@
 
 /* ❄️ FOOTER */
 .footer {
-  margin-top: auto;   /* 🔥 se pega abajo sin dejar huecos */
+  margin-top: 30px;   /* ⬅️ control manual */
   opacity: 0.7;
   font-size: 0.95rem;
 }
+
+
