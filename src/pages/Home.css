@@ -2,20 +2,21 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;   /* ⬅️ ya no centrado vertical */
   align-items: center;
   text-align: center;
   color: white;
-  padding: 20px;
-  z-index: 5; /* 🔥 texto por encima */
+  padding-top: 140px;            /* ⬅️ espacio bajo las luces */
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 5;
 }
 
-/* 🎄 TÍTULO */
 .title {
-  font-size: clamp(2.2rem, 6vw, 3.8rem); /* responsive real */
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
   font-weight: bold;
   margin-bottom: 10px;
-  white-space: nowrap;      /* 🔥 una sola línea */
+  white-space: nowrap;
   text-align: center;
   text-shadow:
     0 0 10px rgba(255,255,255,0.6),
