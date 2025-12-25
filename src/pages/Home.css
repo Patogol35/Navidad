@@ -91,7 +91,6 @@
 
 
 
-/* ❄️ Nueva nieve minimal y al fondo */
 .snow {
   pointer-events: none;
   position: fixed;
@@ -99,21 +98,17 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1; /* 👈 SIEMPRE DETRÁS DEL CONTENIDO */
-
+  z-index: -1; /* siempre detrás del contenido */
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.8) 2px, transparent 3px);
-  background-size: 120px 120px;
-
-  animation: snowMove 12s linear infinite;
-  opacity: 0.4; /* 👈 más ligera */
+    radial-gradient(circle, rgba(255,255,255,0.9) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,255,255,0.7) 1.5px, transparent 2.5px);
+  background-size: 100px 100px, 60px 60px;
+  background-position: 0 0, 30px 10px;
+  animation: snowMove 14s linear infinite;
+  opacity: 0.35;
 }
 
 @keyframes snowMove {
-  from {
-    transform: translateY(-100px);
-  }
-  to {
-    transform: translateY(100vh);
-  }
+  0% { background-position: 0 -100px, 30px -60px; }
+  100% { background-position: 0 100vh, 30px 100vh; }
 }
