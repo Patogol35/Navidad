@@ -12,9 +12,14 @@
 
 /* 🎄 TÍTULO */
 .title {
-  font-size: 3.8rem;
+  font-size: clamp(2.2rem, 6vw, 3.8rem); /* responsive real */
   font-weight: bold;
   margin-bottom: 10px;
+  white-space: nowrap;      /* 🔥 una sola línea */
+  text-align: center;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.6),
+    0 0 25px rgba(255,0,0,0.5);
 }
 
 .glow {
