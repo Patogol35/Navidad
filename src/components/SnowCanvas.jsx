@@ -7,35 +7,26 @@ export default function SnowCanvas() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    let width, height;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    canvas.width = width;
+    canvas.height = height;
+
     const resize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-    resize();
     window.addEventListener("resize", resize);
 
-    const isMobile = width < 768;
-    const flakeCount = isMobile ? 50 : 100;
-
-    // Canvas auxiliar para mejorar rendimiento (GPU)
-    const flakeCanvas = document.createElement("canvas");
-    const flakeCtx = flakeCanvas.getContext("2d");
-    const flakeSize = 3;
-    flakeCanvas.width = flakeSize * 2;
-    flakeCanvas.height = flakeSize * 2;
-
-    flakeCtx.fillStyle = "rgba(255,255,255,0.9)";
-    flakeCtx.beginPath();
-    flakeCtx.arc(flakeSize, flakeSize, flakeSize, 0, Math.PI * 2);
-    flakeCtx.fill();
-
+    const flakeCount = 120;
     const flakes = Array.from({ length: flakeCount }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      speed: Math.random() * 1.1 + 0.3,
-      drift: Math.random() * 0.8 + 0.2,
-      angle: Math.random() * Math.PI * 2,
+      r: Math.random() * 3 + 2, // tamaño variable
+      speed: Math.random() * 1 + 0.5,
+      drift: Math.random() * 0.8 - 0.4,
+      angle: Math.random() * Math.PI * 2
     }));
 
     let animationId;
@@ -43,16 +34,24 @@ export default function SnowCanvas() {
     const update = () => {
       ctx.clearRect(0, 0, width, height);
 
-      flakes.forEach((f) => {
-        f.angle += 0.006;
+      flakes.forEach(f => {
+        f.angle += 0.01;
         f.y += f.speed;
         f.x += Math.sin(f.angle) * f.drift;
 
-        if (f.y > height) f.y = -flakeSize;
+        if (f.y > height) f.y = -f.r;
         if (f.x > width) f.x = 0;
         if (f.x < 0) f.x = width;
 
-        ctx.drawImage(flakeCanvas, f.x, f.y);
+        // gradiente radial para brillo
+        const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
+        grad.addColorStop(0, "rgba(255,255,255,0.9)");
+        grad.addColorStop(0.8, "rgba(255,255,255,0.3)");
+        grad.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fill();
       });
 
       animationId = requestAnimationFrame(update);
@@ -60,22 +59,8 @@ export default function SnowCanvas() {
 
     update();
 
-    // 🧠 Pausar animación mientras hay scroll (fluidez total)
-    let scrollTimeout;
-    const onScroll = () => {
-      cancelAnimationFrame(animationId);
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        update();
-      }, 80);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
     };
   }, []);
@@ -85,14 +70,14 @@ export default function SnowCanvas() {
       ref={canvasRef}
       style={{
         position: "fixed",
-        pointerEvents: "none",
-        inset: 0,
+        top: 0,
+        left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 0,
+        pointerEvents: "none",
+        zIndex: -1,
         willChange: "transform",
-        backfaceVisibility: "hidden",
       }}
     />
   );
-}
+            }
