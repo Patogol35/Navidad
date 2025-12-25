@@ -1,22 +1,19 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { createContext, useState, useEffect } from "react";
 
-export default function ThemeButton() {
-  const { dark, toggleTheme } = useContext(ThemeContext);
+export const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+  const [dark, setDark] = useState(localStorage.getItem("dark") === "true");
+  const toggleTheme = () => setDark(prev => !prev);
+
+  useEffect(() => {
+    localStorage.setItem("dark", dark);
+    document.body.style.background = dark ? "#111" : "#1b3f5a";
+  }, [dark]);
 
   return (
-    <button
-      onClick={toggleTheme}
-      style={{
-        position: "fixed",
-        bottom: 20,
-        right: 20,
-        padding: "10px 18px",
-        borderRadius: "10px",
-        zIndex: 100,
-      }}
-    >
-      {dark ? "☀️ Claro" : "🌙 Oscuro"}
-    </button>
+    <ThemeContext.Provider value={{ dark, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
-}
+};
