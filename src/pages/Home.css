@@ -89,3 +89,31 @@
   font-size: 0.95rem;
 }
 
+
+
+/* ❄️ Nueva nieve minimal y al fondo */
+.snow {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* 👈 SIEMPRE DETRÁS DEL CONTENIDO */
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 2px, transparent 3px);
+  background-size: 120px 120px;
+
+  animation: snowMove 12s linear infinite;
+  opacity: 0.4; /* 👈 más ligera */
+}
+
+@keyframes snowMove {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
