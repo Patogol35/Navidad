@@ -11,9 +11,15 @@ export default function SantaFly() {
     <motion.img
       src={santa}
       alt="Santa volando"
-      style={{ position: "fixed", top: "20%", width: "200px", zIndex: 50 }}
-      animate={{ x: ["-300px", "110%"] }}
-      transition={{ duration: 8, repeat: Infinity, delay: 2 }}
+      style={{
+        position: "fixed",
+        top: "45%",          // ⬇️ más abajo
+        width: "150px",      // ⬅️ más pequeño
+        zIndex: 2,           // ⬅️ debajo del texto
+        pointerEvents: "auto"
+      }}
+      animate={{ x: ["-200px", "110%"] }}
+      transition={{ duration: 10, repeat: Infinity, delay: 3 }}
       onClick={() => hoho.play()}
     />
   );
