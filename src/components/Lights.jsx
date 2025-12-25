@@ -1,16 +1,13 @@
-import React from "react";
 import "./lights.css";
 
-const Lights = () => {
+export default function Lights() {
   const bulbs = Array.from({ length: 30 });
 
   return (
     <ul className="bulbs">
-      {bulbs.map((_, index) => (
-        <li className="bulb" key={index}></li>
+      {bulbs.map((_, i) => (
+        <li className="bulb" key={i}></li>
       ))}
     </ul>
   );
-};
-
-export default Lights;
+}
