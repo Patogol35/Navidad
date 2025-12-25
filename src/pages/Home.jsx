@@ -74,8 +74,14 @@ export default function Home() {
           </footer>
 
           <button className="music-btn" onClick={toggleMusic}>
-            {playing ? "🔇 Pausar música" : "🎶 Música navideña"}
-          </button>
+  {playing ? (
+    "🔇 Pausar música"
+  ) : (
+    <>
+      <span className="music-icon">🎶</span> Música navideña
+    </>
+  )}
+</button>
 
         </div>
       </div>
