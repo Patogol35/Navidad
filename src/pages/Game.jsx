@@ -7,9 +7,9 @@ export default function Game() {
   useEffect(() => {
     const spawn = setInterval(() => {
       setGifts(prev => [...prev, {
-        x: Math.random()*window.innerWidth,
+        x: Math.random() * window.innerWidth,
         y: -50,
-        id: Date.now()
+        id: crypto.randomUUID()
       }]);
     }, 1000);
 
@@ -18,32 +18,37 @@ export default function Game() {
 
   useEffect(() => {
     const drop = setInterval(() => {
-      setGifts(prev => prev.map(g => ({...g, y:g.y+5})).filter(g=>g.y < window.innerHeight));
+      setGifts(prev =>
+        prev.map(g => ({ ...g, y: g.y + 5 }))
+          .filter(g => g.y < window.innerHeight)
+      );
     }, 40);
+
     return () => clearInterval(drop);
-  });
+  }, []);
 
   const catchGift = (id) => {
-    setScore(score+1);
-    setGifts(gifts.filter(g=>g.id !== id));
+    setScore(s => s + 1);
+    setGifts(prev => prev.filter(g => g.id !== id));
   };
 
   return (
-    <div style={{textAlign:"center", marginTop: "80px", color:"#fff"}}>
+    <div style={{ textAlign: "center", marginTop: 80, color: "#fff" }}>
       <h1>🎁 Puntaje: {score}</h1>
-      {gifts.map(g=> (
-        <div 
+      {gifts.map(g => (
+        <div
           key={g.id}
-          onClick={()=>catchGift(g.id)}
+          onClick={() => catchGift(g.id)}
           style={{
-            width:40, height:40,
-            position:"absolute",
-            background:"red",
-            borderRadius:8,
-            top:g.y, left:g.x
+            width: 40, height: 40,
+            position: "absolute",
+            background: "red",
+            borderRadius: 8,
+            top: g.y, left: g.x,
+            cursor: "pointer"
           }}
         ></div>
       ))}
     </div>
   );
-      }
+}
