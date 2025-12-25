@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import SnowCSS from "./components/SnowCSS";
 import NewYear from "./pages/NewYear";
-import SnowCanvas from "./components/SnowCanvas";
+import SnowCSS from "./components/SnowCSS"; // ⬅️ usamos esta
 import Lights from "./components/Lights";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -12,10 +11,14 @@ export default function App() {
     <ThemeProvider>
       <BrowserRouter>
 
-        <SnowCanvas />
+        {/* ❄ Nieve sin lag */}
+        <SnowCSS />
+
+        {/* ✨ Efectos navideños */}
         <Lights />
         <ThemeButton />
 
+        {/* 📌 Rutas */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/nuevo-ano" element={<NewYear />} />
