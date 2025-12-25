@@ -1,1 +1,68 @@
+.bulbs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
 
+.bulb {
+  width: 12px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: red;
+  position: relative;
+  animation: blink 1.2s infinite;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+/* 🔌 Cable encima de cada bombillo */
+.bulb::before {
+  content: "";
+  width: 4px;
+  height: 8px;
+  background: #333;
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* 😍 Colores alternos: rojo, verde, azul, amarillo */
+.bulb:nth-child(4n+1) {
+  background-color: #ff4b4b;
+  animation-delay: 0s;
+}
+
+.bulb:nth-child(4n+2) {
+  background-color: #2eff2e;
+  animation-delay: 0.2s;
+}
+
+.bulb:nth-child(4n+3) {
+  background-color: #009dff;
+  animation-delay: 0.4s;
+}
+
+.bulb:nth-child(4n+4) {
+  background-color: #ffe600;
+  animation-delay: 0.6s;
+}
+
+/* ✨ Parpadeo */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1.4);
+  }
+  50% {
+    opacity: 0.4;
+    filter: brightness(0.7);
+  }
+}
