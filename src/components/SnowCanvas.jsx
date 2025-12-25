@@ -20,13 +20,12 @@ export default function SnowCanvas() {
     }));
 
     const update = () => {
-      ctx.clearRect(0,0,width,height);
-      flakes.forEach(f=> {
+      ctx.clearRect(0, 0, width, height);
+      flakes.forEach(f => {
         ctx.font = `${f.r * 6}px serif`;
         ctx.fillText(f.shape, f.x, f.y);
-
-        f.y += Math.pow(f.d,2)+1;
-        if(f.y > height){f.y = 0; f.x = Math.random()*width;}
+        f.y += Math.pow(f.d, 2) + 1;
+        if (f.y > height) { f.y = 0; f.x = Math.random() * width; }
       });
       requestAnimationFrame(update);
     };
@@ -34,9 +33,9 @@ export default function SnowCanvas() {
   }, []);
 
   return (
-    <canvas 
+    <canvas
       ref={canvasRef}
-      style={{position:"fixed",top:0,left:0,zIndex:-1}}
-    ></canvas>
+      style={{ position: "fixed", top: 0, left: 0, zIndex: 0 }}
+    />
   );
 }
