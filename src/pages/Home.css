@@ -1,201 +1,200 @@
+La card se puede hacer un poco transparente para q se vea lo q cae la nueve
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap");
 
 /* =========================
 FONDO NAVIDEÑO ELEGANTE
 ========================= */
 body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
-    linear-gradient(180deg, #9c1f1f 0%, #5c0f0f 100%);
+margin: 0;
+min-height: 100vh;
+background:
+radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
+linear-gradient(180deg, #9c1f1f 0%, #5c0f0f 100%);
 
-  overflow-y: auto;              /* ✅ permite arrastrar */
-  overscroll-behavior-y: auto;   /* ✅ habilita pull-to-refresh */
+overflow-y: auto;              /* ✅ permite arrastrar /
+overscroll-behavior-y: auto;   / ✅ habilita pull-to-refresh */
 }
 
 /* =========================
 CONTENEDOR PRINCIPAL
 ========================= */
 .home-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
 
-  padding: 24px 16px 16px;
+padding: 24px 16px 16px; /* ⬅️ más aire arriba, menos abajo */
 
-  position: relative;
-  z-index: 10; /* ⬅️ siempre arriba de la nieve */
-  color: #fff;
+position: relative;
+z-index: 10;
+color: #fff;
 }
 
 /* =========================
 TARJETA CENTRAL
 ========================= */
-/* =========================
-TARJETA CENTRAL (GLASS REAL)
-========================= */
 .home-card {
-  position: relative;
+background: rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(10px);
+border-radius: 20px;
+padding: 32px 28px;
+max-width: 560px;
 
-  background: rgba(255, 255, 255, 0.045); /* ⬅️ más transparente */
-  backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
+margin-top: -20px; /* ⬅️ sube sutilmente la card */
 
-  border-radius: 20px;
-  padding: 32px 28px;
-  max-width: 560px;
-  width: 100%;
-  text-align: center;
+width: 100%;
+text-align: center;
 
-  margin-top: -20px;
-
-  box-shadow:
-    0 12px 32px rgba(0,0,0,0.35),
-    inset 0 0 0 1px rgba(255,255,255,0.12);
+box-shadow:
+0 10px 30px rgba(0,0,0,0.35),
+inset 0 0 0 1px rgba(255,255,255,0.15);
 }
 
 /* =========================
 TÍTULO
 ========================= */
 .title {
-  font-family: "Cinzel", serif;
-  font-size: clamp(2.2rem, 6vw, 3.4rem);
-  font-weight: 700;
-  letter-spacing: 1.3px;
-  margin: 0 0 6px;
-  color: #ffd700;
+font-family: "Cinzel", serif;
+font-size: clamp(2.2rem, 6vw, 3.4rem);
+font-weight: 700;
+letter-spacing: 1.3px;
+margin: 0 0 6px;
+color: #ffd700;
 
-  text-shadow:
-    0 0 8px rgba(255,215,0,0.55),
-    0 0 16px rgba(255,255,255,0.25);
+text-shadow:
+0 0 8px rgba(255,215,0,0.55),
+0 0 16px rgba(255,255,255,0.25);
 }
 
 .title span {
-  margin-left: 6px;
+margin-left: 6px;
 }
 
 /* =========================
 SUBTÍTULO
 ========================= */
 .subtitle {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.2rem, 4vw, 1.6rem);
-  margin: 0 0 18px;
-  color: #ffe8b3;
+font-family: "Playfair Display", serif;
+font-size: clamp(1.2rem, 4vw, 1.6rem);
+margin: 0 0 18px;
+color: #ffe8b3;
 }
 
 /* =========================
 TEXTOS
 ========================= */
 .message {
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 4px;
+font-size: 0.95rem;
+opacity: 0.85;
+margin-bottom: 4px;
 }
 
 .name {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.15rem, 4vw, 1.45rem);
-  font-weight: 600;
-  color: #ffdf7e;
-  margin-bottom: 14px;
+font-family: "Playfair Display", serif;
+font-size: clamp(1.15rem, 4vw, 1.45rem);
+font-weight: 600;
+color: #ffdf7e;
+margin-bottom: 14px;
 }
 
 .blessing {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  opacity: 0.95;
-  margin-bottom: 20px;
+font-size: 0.95rem;
+line-height: 1.6;
+opacity: 0.95;
+margin-bottom: 20px;
 }
 
 /* =========================
 FOOTER
 ========================= */
 .footer {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  letter-spacing: 0.5px;
+font-size: 0.85rem;
+opacity: 0.75;
+letter-spacing: 0.5px;
 }
 
 /* =========================
 NIEVE (NO TOCAR)
 ========================= */
 .snow-mobile {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-
-  z-index: 5; /* ⬅️ entre fondo y card */
-  overflow: hidden;
+pointer-events: none;
+position: fixed;
+inset: 0;
+z-index: 0;
+overflow: hidden;
 }
 
 .snow-mobile::before {
-  content: "";
-  position: absolute;
-  inset: -120vh 0 0 0;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.9) 2.5px, transparent 3.5px);
-  background-size: 70px 70px;
-  animation: snow-fall-front 6s linear infinite;
-  opacity: 0.45;
+content: "";
+position: absolute;
+inset: -120vh 0 0 0;
+background-image:
+radial-gradient(circle, rgba(255,255,255,0.9) 2.5px, transparent 3.5px);
+background-size: 70px 70px;
+animation: snow-fall-front 6s linear infinite;
+opacity: 0.45;
 }
 
 .snow-mobile::after {
-  content: "";
-  position: absolute;
-  inset: -120vh 0 0 0;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.6) 1.3px, transparent 2.5px);
-  background-size: 45px 45px;
-  animation: snow-fall-back 10s linear infinite;
-  opacity: 0.35;
+content: "";
+position: absolute;
+inset: -120vh 0 0 0;
+background-image:
+radial-gradient(circle, rgba(255,255,255,0.6) 1.3px, transparent 2.5px);
+background-size: 45px 45px;
+animation: snow-fall-back 10s linear infinite;
+opacity: 0.35;
 }
 
+@keyframes snow-fall-front {
+to { transform: translateY(120vh); }
+}
 
-
+@keyframes snow-fall-back {
+to { transform: translateY(120vh); }
+}
 
 /* =========================
 ANIMACIÓN TÍTULO
 ========================= */
 .title {
-  animation: glowPulse 3s ease-in-out infinite;
+animation: glowPulse 3s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0% {
-    text-shadow:
-      0 0 6px rgba(255,215,0,0.4),
-      0 0 12px rgba(255,255,255,0.2);
-  }
-  50% {
-    text-shadow:
-      0 0 12px rgba(255,215,0,0.9),
-      0 0 22px rgba(255,255,255,0.5);
-  }
-  100% {
-    text-shadow:
-      0 0 6px rgba(255,215,0,0.4),
-      0 0 12px rgba(255,255,255,0.2);
-  }
+0% {
+text-shadow:
+0 0 6px rgba(255,215,0,0.4),
+0 0 12px rgba(255,255,255,0.2);
+}
+50% {
+text-shadow:
+0 0 12px rgba(255,215,0,0.9),
+0 0 22px rgba(255,255,255,0.5);
+}
+100% {
+text-shadow:
+0 0 6px rgba(255,215,0,0.4),
+0 0 12px rgba(255,255,255,0.2);
+}
 }
 
 /* =========================
 LUCES NAVIDEÑAS
 ========================= */
 .christmas-lights {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 14px;
+display: flex;
+justify-content: center;
+gap: 10px;
+margin-bottom: 14px;
 }
 
 .light {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  animation: blink 1.8s infinite;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+animation: blink 1.8s infinite;
 }
 
 .light.red { background: #ff4d4d; animation-delay: 0s; }
@@ -204,87 +203,84 @@ LUCES NAVIDEÑAS
 .light.blue { background: #66ccff; animation-delay: .9s; }
 
 @keyframes blink {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+0%, 100% { opacity: 0.3; }
+50% { opacity: 1; }
 }
 
 /* =========================
 BOTÓN MÚSICA
 ========================= */
 .music-btn {
-  margin-top: 16px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 0.85rem;
-  color: #fff;
-  cursor: pointer;
-  transition: all .3s ease;
+margin-top: 16px;
+background: rgba(255,255,255,0.15);
+border: 1px solid rgba(255,255,255,0.3);
+border-radius: 20px;
+padding: 6px 14px;
+font-size: 0.85rem;
+color: #fff;
+cursor: pointer;
+transition: all .3s ease;
 }
 
 .music-btn:hover {
-  background: rgba(255,255,255,0.3);
+background: rgba(255,255,255,0.3);
 }
-
 
 /* =========================
 ÁRBOL DE NAVIDAD ANIMADO
 ========================= */
 .christmas-tree {
-  margin: 18px auto 12px;
-  font-size: 3.2rem;
-  animation: treeSway 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 100, 0.35));
+margin: 18px auto 12px;
+font-size: 3.2rem;
+animation: treeSway 3.5s ease-in-out infinite;
+filter: drop-shadow(0 0 8px rgba(0, 255, 100, 0.35));
 }
 
 @keyframes treeSway {
-  0%   { transform: rotate(0deg) scale(1); }
-  25%  { transform: rotate(-2deg) scale(1.02); }
-  50%  { transform: rotate(0deg) scale(1.05); }
-  75%  { transform: rotate(2deg) scale(1.02); }
-  100% { transform: rotate(0deg) scale(1); }
+0%   { transform: rotate(0deg) scale(1); }
+25%  { transform: rotate(-2deg) scale(1.02); }
+50%  { transform: rotate(0deg) scale(1.05); }
+75%  { transform: rotate(2deg) scale(1.02); }
+100% { transform: rotate(0deg) scale(1); }
 }
 
 /* ESTRELLA DEL ÁRBOL */
 .tree-star {
-  display: block;
-  font-size: 1.4rem;
-  margin-bottom: -6px;
-  animation: starGlow 2.5s ease-in-out infinite;
-  color: #ffd700;
+display: block;
+font-size: 1.4rem;
+margin-bottom: -6px;
+animation: starGlow 2.5s ease-in-out infinite;
+color: #ffd700;
 }
 
 @keyframes starGlow {
-  0%, 100% {
-    text-shadow: 0 0 6px rgba(255,215,0,0.4);
-    opacity: 0.7;
-  }
-  50% {
-    text-shadow: 0 0 16px rgba(255,215,0,0.9);
-    opacity: 1;
-  }
+0%, 100% {
+text-shadow: 0 0 6px rgba(255,215,0,0.4);
+opacity: 0.7;
+}
+50% {
+text-shadow: 0 0 16px rgba(255,215,0,0.9);
+opacity: 1;
+}
 }
 
-
 /* =========================
-
 
 /* =========================
 ESTRELLAS FLOTANTES
 ========================= */
 .floating-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
+position: absolute;
+inset: 0;
+pointer-events: none;
+z-index: 1;
 }
 
 .star {
-  position: absolute;
-  font-size: 0.7rem;
-  opacity: 0.7;
-  animation: starFloat 6s linear infinite;
+position: absolute;
+font-size: 0.7rem;
+opacity: 0.7;
+animation: starFloat 6s linear infinite;
 }
 
 .star:nth-child(1) { left: 20%; animation-delay: 0s; }
@@ -293,24 +289,24 @@ ESTRELLAS FLOTANTES
 .star:nth-child(4) { left: 70%; animation-delay: 1s; }
 
 @keyframes starFloat {
-  0% {
-    transform: translateY(110vh) scale(0.8);
-    opacity: 0;
-  }
-  10% { opacity: 0.6; }
-  100% {
-    transform: translateY(-10vh) scale(1.1);
-    opacity: 0;
-  }
+0% {
+transform: translateY(110vh) scale(0.8);
+opacity: 0;
+}
+10% { opacity: 0.6; }
+100% {
+transform: translateY(-10vh) scale(1.1);
+opacity: 0;
+}
 }
 
 /* =========================
 ICONO MÚSICA CLARO
-========================= */
+========================= /
 .music-icon {
-  font-size: 1.1rem;
-  margin-right: 6px;
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.45); /* 🔑 contraste */
+font-size: 1.1rem;
+margin-right: 6px;
+padding: 2px 6px;
+border-radius: 6px;
+background: rgba(0,0,0,0.45); / 🔑 contraste */
 }
