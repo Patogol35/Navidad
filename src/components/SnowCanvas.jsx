@@ -16,14 +16,18 @@ export default function SnowCanvas() {
 
     resize();
     window.addEventListener("resize", resize);
-    window.addEventListener("orientationchange", resize); // 🔥 clave móvil
+    window.addEventListener("orientationchange", resize);
 
-    const shapes = ["❄️", "✦", "✧", "✺"];
-    const flakes = Array.from({ length: 150 }).map(() => ({
+    const isMobile = window.innerWidth < 768;
+
+    const shapes = ["❄️", "✦"];  // ⬅️ menos variedad
+    const flakeCount = isMobile ? 80 : 130; // ⬅️ clave
+
+    const flakes = Array.from({ length: flakeCount }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 3 + 1,
-      d: Math.random() + 1,
+      r: Math.random() * 2 + 1,
+      d: Math.random() + 0.5,
       shape: shapes[Math.floor(Math.random() * shapes.length)],
     }));
 
@@ -34,7 +38,7 @@ export default function SnowCanvas() {
         ctx.font = `${f.r * 6}px serif`;
         ctx.fillText(f.shape, f.x, f.y);
 
-        f.y += Math.pow(f.d, 2) + 1;
+        f.y += f.d + 0.5;   // ⬅️ movimiento simple
 
         if (f.y > height) {
           f.y = -10;
@@ -60,8 +64,8 @@ export default function SnowCanvas() {
         position: "fixed",
         top: 0,
         left: 0,
-        width: "100vw",     // 🔥 fuerza ancho
-        height: "100vh",    // 🔥 fuerza alto
+        width: "100vw",
+        height: "100vh",
         zIndex: 0,
         pointerEvents: "none",
       }}
