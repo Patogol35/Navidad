@@ -64,7 +64,7 @@ export default function Home() {
           </p>
 
           <footer className="footer">
-            ❄️ Felices Fiestas ❄️
+            ❄️ Feliz Navidad ❄️
           </footer>
 
           
