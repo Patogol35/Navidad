@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import NewYear from "./pages/NewYear";
 import SnowCSS from "./components/SnowCSS";
 import SnowCanvas from "./components/SnowCanvas";
-import Lights from "./components/Lights";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -17,7 +16,6 @@ export default function App() {
         {/* ❄️ Nieve optimizada según dispositivo */}
         {isMobile ? <SnowCSS /> : <SnowCanvas />}
 
-        <Lights />
         <ThemeButton />
 
         <Routes>
