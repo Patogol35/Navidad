@@ -48,7 +48,7 @@ export default function Home() {
 
           {/* ÁRBOL */}
           <div className="christmas-tree">
-            <span className="tree-star">⭐</span>
+            <span className="tree-star"></span>
             ⭐
           </div>
 
