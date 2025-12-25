@@ -264,3 +264,63 @@ BOTÓN MÚSICA
     opacity: 1;
   }
 }
+
+
+/* =========================
+REGALOS NAVIDEÑOS
+========================= */
+.gifts {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 16px 0 10px;
+}
+
+.gift {
+  font-size: 1.6rem;
+  animation: giftFloat 3s ease-in-out infinite;
+}
+
+.gift:nth-child(2) { animation-delay: .4s; }
+.gift:nth-child(3) { animation-delay: .8s; }
+
+@keyframes giftFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
+/* =========================
+ESTRELLAS FLOTANTES
+========================= */
+.floating-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  animation: starFloat 6s linear infinite;
+}
+
+.star:nth-child(1) { left: 20%; animation-delay: 0s; }
+.star:nth-child(2) { left: 35%; animation-delay: 2s; }
+.star:nth-child(3) { left: 55%; animation-delay: 4s; }
+.star:nth-child(4) { left: 70%; animation-delay: 1s; }
+
+@keyframes starFloat {
+  0% {
+    transform: translateY(110vh) scale(0.8);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  100% {
+    transform: translateY(-10vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
