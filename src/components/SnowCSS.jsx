@@ -1,5 +1,3 @@
 export default function SnowCSS() {
-  return (
-    <div className="snow"></div>
-  );
+  return <div className="snow" />;
 }
