@@ -4,16 +4,27 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="home-container">
-      <h1 className="title">🎄 Navidad React 🎅</h1>
-      <p className="subtitle">¡Bienvenido! Disfruta la magia navideña ✨</p>
+      <div className="card">
+        <h1 className="title">🎄 Feliz Navidad 🎅</h1>
 
-      <nav className="nav-menu">
-        <Link to="/juego" className="btn-nav">🎮 Mini Juego</Link>
-        <Link to="/nuevo-ano" className="btn-nav">🎆 Año Nuevo</Link>
-      </nav>
+        <p className="subtitle">
+          Que la magia de la Navidad llene tu hogar de paz, amor y esperanza ✨
+        </p>
+
+        <p className="message">
+          Disfruta las luces, la nieve y la música 🎶  
+          Hecho con React y mucho espíritu navideño ❤️
+        </p>
+
+        <nav className="nav-menu">
+          <Link to="/nuevo-ano" className="btn-nav">
+            🎆 Recibir el Año Nuevo
+          </Link>
+        </nav>
+      </div>
 
       <footer className="footer">
-        Hecho con ❤️ y React
+        ❄️ Felices Fiestas ❄️
       </footer>
     </div>
   );
