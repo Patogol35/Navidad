@@ -1,5 +1,5 @@
 import { Howl } from "howler";
-import { useEffect } from "react";
+import { useState } from "react";
 
 const music = new Howl({
   src: ["https://www.bensound.com/bensound-music/bensound-christmastime.mp3"],
@@ -8,9 +8,21 @@ const music = new Howl({
 });
 
 export default function MusicPlayer() {
-  useEffect(() => {
+  const [playing, setPlaying] = useState(false);
+
+  const playMusic = () => {
     music.play();
-    return () => music.stop();
-  }, []);
-  return null;
-}
+    setPlaying(true);
+  };
+
+  if (playing) return null;
+
+  return (
+    <button
+      onClick={playMusic}
+      style={{ position: "fixed", bottom: 20, left: 20, zIndex: 100 }}
+    >
+      🔊 Música
+    </button>
+  );
+    }
