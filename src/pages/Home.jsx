@@ -60,7 +60,7 @@ export default function Home() {
           </p>
 
           <p className="blessing">
-            Que estas fiestas estén llenas de paz, amor y esperanza ✨
+            Que esta Navidad esté llena de paz, bendiciones y esperanza ✨
           </p>
 
           <footer className="footer">
