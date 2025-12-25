@@ -21,16 +21,18 @@ CONTENEDOR
   flex-direction: column;
   align-items: center;
 
-  padding-top: 72px;      /* ⬅️ compacto */
-  padding-bottom: 20px;
+  justify-content: center;   /* ⬅️ elimina el vacío abajo */
+  padding-top: 0;
+  padding-bottom: 0;
   padding-inline: 16px;
 
   text-align: center;
   color: #ffffff;
   position: relative;
   z-index: 10;
-}
 
+  transform: translateY(-6vh); /* ⬅️ sube ligeramente */
+}
 /* =========================
 TÍTULO
 ========================= */
