@@ -1,84 +1,68 @@
-import { useRef, useEffect } from "react";
+    import { useRef, useEffect } from "react";
 
 export default function SnowCanvas() {
   const canvasRef = useRef(null);
-  const isTouching = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
     let width, height;
-
     const resize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-
     resize();
     window.addEventListener("resize", resize);
-    window.addEventListener("orientationchange", resize);
 
     const isMobile = width < 768;
-    const flakeCount = isMobile ? 80 : 130;
+    const flakeCount = isMobile ? 50 : 100;
+
+    // Offscreen canvas para dibujar los copos solo una vez
+    const flakeCanvas = document.createElement("canvas");
+    const flakeCtx = flakeCanvas.getContext("2d");
+    const flakeSize = 4;
+    flakeCanvas.width = flakeSize * 2;
+    flakeCanvas.height = flakeSize * 2;
+
+    flakeCtx.fillStyle = "rgba(255,255,255,0.85)";
+    flakeCtx.beginPath();
+    flakeCtx.arc(flakeSize, flakeSize, flakeSize, 0, Math.PI * 2);
+    flakeCtx.fill();
 
     const flakes = Array.from({ length: flakeCount }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 1.6 + 0.8,
-      speed: Math.random() * 0.6 + 0.4,
-      drift: Math.random() * 0.4 - 0.2
+      speed: Math.random() * 1 + 0.5,
+      drift: Math.random() * 1 + 0.5,
+      angle: Math.random() * Math.PI * 2
     }));
 
     let animationId;
 
     const update = () => {
-      if (!isTouching.current) {
-        ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
-        flakes.forEach(f => {
-          ctx.beginPath();
-          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(255,255,255,0.85)";
-          ctx.fill();
+      flakes.forEach(f => {
+        f.angle += 0.01;
+        f.y += f.speed;
+        f.x += Math.sin(f.angle) * f.drift;
 
-          f.y += f.speed;
-          f.x += f.drift;
+        if (f.y > height) f.y = -flakeSize;
+        if (f.x > width) f.x = 0;
+        if (f.x < 0) f.x = width;
 
-          if (f.y > height) {
-            f.y = -5;
-            f.x = Math.random() * width;
-          }
-
-          if (f.x > width) f.x = 0;
-          if (f.x < 0) f.x = width;
-        });
-      }
+        ctx.drawImage(flakeCanvas, f.x, f.y);
+      });
 
       animationId = requestAnimationFrame(update);
     };
 
     update();
 
-    const onTouchStart = () => {
-      isTouching.current = true;
-    };
-
-    const onTouchEnd = () => {
-      isTouching.current = false;
-    };
-
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd);
-    window.addEventListener("touchcancel", onTouchEnd);
-
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
-      window.removeEventListener("orientationchange", resize);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("touchcancel", onTouchEnd);
     };
   }, []);
 
@@ -95,4 +79,4 @@ export default function SnowCanvas() {
       }}
     />
   );
-      }
+}
