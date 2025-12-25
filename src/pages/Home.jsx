@@ -18,8 +18,10 @@ export default function Home() {
 
   return (
     <>
+      {/* NIEVE */}
       <div className="snow-mobile"></div>
 
+      {/* MÚSICA */}
       <audio
         ref={audioRef}
         loop
@@ -29,7 +31,7 @@ export default function Home() {
       <div className="home-container">
         <div className="home-card">
 
-          {/* LUCES */}
+          {/* LUCES NAVIDEÑAS */}
           <div className="christmas-lights">
             <div className="light red"></div>
             <div className="light green"></div>
@@ -39,14 +41,23 @@ export default function Home() {
             <div className="light green"></div>
           </div>
 
+          {/* TÍTULO */}
           <h1 className="title">
             Feliz Navidad <span>🎄</span><span>🎅</span>
           </h1>
 
+          {/* ÁRBOL ANIMADO */}
+          <div className="christmas-tree">
+            <span className="tree-star">⭐</span>
+            🎄
+          </div>
+
+          {/* SUBTÍTULO */}
           <h2 className="subtitle">
             y un próspero 2026
           </h2>
 
+          {/* TEXTO */}
           <p className="message">Les desea</p>
 
           <p className="name">
@@ -57,6 +68,7 @@ export default function Home() {
             Que estas fiestas estén llenas de paz, amor y esperanza ✨
           </p>
 
+          {/* FOOTER */}
           <footer className="footer">
             ❄️ Felices Fiestas ❄️
           </footer>
@@ -65,8 +77,9 @@ export default function Home() {
           <button className="music-btn" onClick={toggleMusic}>
             {playing ? "🔇 Pausar música" : "🎶 Música navideña"}
           </button>
+
         </div>
       </div>
     </>
   );
-}
+      }
