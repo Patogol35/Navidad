@@ -1,34 +1,22 @@
 .bulbs {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
-  padding: 5px 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  z-index: 10;
-  pointer-events: none;
+  justify-content: space-around;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
 }
 
 .bulb {
-  width: 16px;
-  height: 24px;
-  background: red;
+  width: 12px;
+  height: 20px;
   border-radius: 50%;
-  animation: blink 1s infinite alternate;
+  animation: glow 1s alternate infinite;
 }
 
-.bulb:nth-child(3n) {
-  background: green;
-}
-.bulb:nth-child(4n) {
-  background: yellow;
-}
-.bulb:nth-child(5n) {
-  background: blue;
-}
-
-@keyframes blink {
-  0% { opacity: .3; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1.1); }
+@keyframes glow {
+  0% { background: #ff0000; box-shadow: 0 0 5px red; }
+  100% { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
 }
