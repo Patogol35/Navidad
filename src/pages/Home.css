@@ -31,7 +31,7 @@ CONTENEDOR
   position: relative;
   z-index: 10;
 
-  transform: translateY(-6vh); /* ⬅️ sube ligeramente */
+  transform: translateY(-4vh); /* ⬅️ sube ligeramente */
 }
 /* =========================
 TÍTULO
