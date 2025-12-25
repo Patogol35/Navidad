@@ -37,6 +37,9 @@ TARJETA CENTRAL
   border-radius: 20px;
   padding: 32px 28px;
   max-width: 560px;
+
+  margin-top: -20px; /* ⬅️ sube sutilmente la card */
+  
   width: 100%;
   text-align: center;
 
