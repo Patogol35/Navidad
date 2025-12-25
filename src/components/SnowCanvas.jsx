@@ -20,8 +20,8 @@ export default function SnowCanvas() {
 
     const isMobile = window.innerWidth < 768;
 
-    const shapes = ["❄️", "✦", "✧", "✺"];
-    const flakeCount = isMobile ? 90 : 140;
+    const shapes = ["❄️"]; // 🔥 SOLO UNO
+    const flakeCount = isMobile ? 45 : 70;
 
     const flakes = Array.from({ length: flakeCount }).map(() => {
       const size = Math.random() * 3 + 1;
@@ -29,9 +29,9 @@ export default function SnowCanvas() {
         x: Math.random() * width,
         y: Math.random() * height,
         size,
-        speed: Math.random() * 1.2 + 0.6,
-        shape: shapes[Math.floor(Math.random() * shapes.length)],
-        font: `${size * 6}px serif`, // 🔥 se calcula UNA sola vez
+        speed: Math.random() * 1.1 + 0.6,
+        shape: shapes[0],
+        font: `${size * 6}px serif`,
       };
     });
 
@@ -41,7 +41,6 @@ export default function SnowCanvas() {
       flakes.forEach(f => {
         ctx.font = f.font;
         ctx.fillText(f.shape, f.x, f.y);
-
         f.y += f.speed;
 
         if (f.y > height) {
