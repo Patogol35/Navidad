@@ -8,11 +8,7 @@ export default function Home() {
   const toggleMusic = () => {
     if (!audioRef.current) return;
 
-    if (playing) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
+    playing ? audioRef.current.pause() : audioRef.current.play();
     setPlaying(!playing);
   };
 
@@ -21,17 +17,21 @@ export default function Home() {
       {/* NIEVE */}
       <div className="snow-mobile"></div>
 
+      {/* ESTRELLAS */}
+      <div className="floating-stars">
+        <div className="star">✨</div>
+        <div className="star">✨</div>
+        <div className="star">✨</div>
+        <div className="star">✨</div>
+      </div>
+
       {/* MÚSICA */}
-      <audio
-        ref={audioRef}
-        loop
-        src="/christmas.mp3"
-      />
+      <audio ref={audioRef} loop src="/christmas.mp3" />
 
       <div className="home-container">
         <div className="home-card">
 
-          {/* LUCES NAVIDEÑAS */}
+          {/* LUCES */}
           <div className="christmas-lights">
             <div className="light red"></div>
             <div className="light green"></div>
@@ -46,10 +46,17 @@ export default function Home() {
             Feliz Navidad <span>🎄</span><span>🎅</span>
           </h1>
 
-          {/* ÁRBOL ANIMADO */}
+          {/* ÁRBOL */}
           <div className="christmas-tree">
             <span className="tree-star">⭐</span>
             🎄
+          </div>
+
+          {/* REGALOS */}
+          <div className="gifts">
+            <div className="gift">🎁</div>
+            <div className="gift">🎁</div>
+            <div className="gift">🎁</div>
           </div>
 
           {/* SUBTÍTULO */}
@@ -57,7 +64,6 @@ export default function Home() {
             y un próspero 2026
           </h2>
 
-          {/* TEXTO */}
           <p className="message">Les desea</p>
 
           <p className="name">
@@ -68,12 +74,10 @@ export default function Home() {
             Que estas fiestas estén llenas de paz, amor y esperanza ✨
           </p>
 
-          {/* FOOTER */}
           <footer className="footer">
             ❄️ Felices Fiestas ❄️
           </footer>
 
-          {/* BOTÓN MÚSICA */}
           <button className="music-btn" onClick={toggleMusic}>
             {playing ? "🔇 Pausar música" : "🎶 Música navideña"}
           </button>
@@ -82,4 +86,4 @@ export default function Home() {
       </div>
     </>
   );
-      }
+              }
