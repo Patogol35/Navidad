@@ -1,17 +1,18 @@
 .home-container {
-  height: 100vh;                 /* ⬅️ altura exacta */
+  min-height: 100vh;                 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
   color: white;
-  padding-top: 130px;            /* debajo de las luces */
-  padding-bottom: 20px;          /* ⬅️ mínimo abajo */
+  padding-top: 130px;
+  padding-bottom: 30px;
   padding-left: 20px;
   padding-right: 20px;
-  z-index: 5;
   box-sizing: border-box;
+  position: relative;
+  z-index: 10; /* ⬅️ contenido encima de la nieve */
 }
 
 .title {
@@ -38,20 +39,17 @@
   }
 }
 
-/* ✨ SUBTÍTULO */
 .subtitle {
   font-size: 1.7rem;
   margin-bottom: 25px;
   letter-spacing: 1px;
 }
 
-/* 🧍 TEXTO */
 .message {
   font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
-/* 🌟 NOMBRE */
 .name {
   font-size: 1.5rem;
   font-weight: bold;
@@ -68,7 +66,6 @@
   100% { text-shadow: 0 0 5px #ffdf7e; }
 }
 
-/* ❤️ MENSAJE FINAL */
 .blessing {
   font-size: 1.1rem;
   max-width: 600px;
@@ -77,7 +74,6 @@
   opacity: 0.95;
 }
 
-/* ⏳ APARICIÓN SUAVE */
 .fade {
   animation: fadeIn 2s ease forwards;
 }
@@ -87,13 +83,13 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ❄️ FOOTER */
 .footer {
-  margin-top: 30px;   /* ⬅️ control manual */
+  margin-top: 30px;
   opacity: 0.7;
   font-size: 0.95rem;
 }
 
+/* ❄️ Nieve al fondo */
 .snow {
   pointer-events: none;
   position: fixed;
@@ -117,7 +113,7 @@
     50px -10px,
     -30px 20px;
 
-  animation: snowfall 10s linear infinite;
+  animation: snowfall 12s linear infinite;
 }
 
 @keyframes snowfall {
