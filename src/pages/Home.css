@@ -23,18 +23,23 @@ CONTENEDOR PRINCIPAL
   align-items: center;
   justify-content: center;
 
-  padding: 24px 16px 16px; /* ⬅️ más aire arriba, menos abajo */
+  padding: 24px 16px 16px;
 
   position: relative;
-  z-index: 10;
+  z-index: 10; /* ⬅️ siempre arriba de la nieve */
   color: #fff;
 }
 
 /* =========================
 TARJETA CENTRAL
 ========================= */
+/* =========================
+TARJETA CENTRAL (GLASS REAL)
+========================= */
 .home-card {
-  background: rgba(255, 255, 255, 0.05); /* más transparente */
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.045); /* ⬅️ más transparente */
   backdrop-filter: blur(12px) saturate(120%);
   -webkit-backdrop-filter: blur(12px) saturate(120%);
 
@@ -121,7 +126,8 @@ NIEVE (NO TOCAR)
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 0;
+
+  z-index: 5; /* ⬅️ entre fondo y card */
   overflow: hidden;
 }
 
@@ -145,14 +151,6 @@ NIEVE (NO TOCAR)
   background-size: 45px 45px;
   animation: snow-fall-back 10s linear infinite;
   opacity: 0.35;
-}
-
-@keyframes snow-fall-front {
-  to { transform: translateY(120vh); }
-}
-
-@keyframes snow-fall-back {
-  to { transform: translateY(120vh); }
 }
 
 
