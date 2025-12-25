@@ -311,5 +311,7 @@ ICONO MÚSICA CLARO
 .music-icon {
   font-size: 1.1rem;
   margin-right: 6px;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.45); /* 🔑 contraste */
 }
