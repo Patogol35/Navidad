@@ -78,7 +78,8 @@ export default function Home() {
     "🔇 Pausar música"
   ) : (
     <>
-      <span className="music-icon">🎶</span> Música navideña
+      <span className="music-icon">🎶</span>
+      Música navideña
     </>
   )}
 </button>
