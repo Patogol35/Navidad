@@ -5,17 +5,15 @@ export default function Home() {
     <div className="home-container">
       <h1 className="title">
         Feliz Navidad
-        <span className="emoji">🎄</span>
-        <span className="emoji">🎅</span>
+        <span>🎄</span>
+        <span>🎅</span>
       </h1>
 
       <h2 className="subtitle">
         y un próspero 2026
       </h2>
 
-      <p className="message">
-        Les desea
-      </p>
+      <p className="message">Les desea</p>
 
       <p className="name">
         Jorge Patricio Santamaría Cherrez
