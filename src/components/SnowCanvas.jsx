@@ -19,29 +19,30 @@ export default function SnowCanvas() {
     window.addEventListener("orientationchange", resize);
 
     const isMobile = window.innerWidth < 768;
-
-    const shapes = ["❄️", "✦"];  // ⬅️ menos variedad
-    const flakeCount = isMobile ? 80 : 130; // ⬅️ clave
+    const flakeCount = isMobile ? 80 : 150;
 
     const flakes = Array.from({ length: flakeCount }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 2 + 1,
-      d: Math.random() + 0.5,
-      shape: shapes[Math.floor(Math.random() * shapes.length)],
+      r: Math.random() * 2 + 1.5,
+      d: Math.random() * 0.8 + 0.5,
+      opacity: Math.random() * 0.5 + 0.4,
     }));
 
     const update = () => {
       ctx.clearRect(0, 0, width, height);
 
       flakes.forEach(f => {
-        ctx.font = `${f.r * 6}px serif`;
-        ctx.fillText(f.shape, f.x, f.y);
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${f.opacity})`;
+        ctx.fill();
 
-        f.y += f.d + 0.5;   // ⬅️ movimiento simple
+        f.y += f.d;
+        f.x += Math.sin(f.y * 0.01) * 0.3;
 
         if (f.y > height) {
-          f.y = -10;
+          f.y = -5;
           f.x = Math.random() * width;
         }
       });
