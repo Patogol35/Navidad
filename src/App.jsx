@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import SnowCSS from "./components/SnowCSS";
 import NewYear from "./pages/NewYear";
 import SnowCanvas from "./components/SnowCanvas";
 import Lights from "./components/Lights";
