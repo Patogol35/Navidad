@@ -38,24 +38,57 @@
   overflow: hidden;
 }
 
+/* CAPA 1 – copos grandes (cerca) */
 .snow-mobile::before {
   content: "";
   position: absolute;
-  inset: -100vh 0 0 0;
+  inset: -120vh 0 0 0;
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.9) 2px, transparent 3px);
-  background-size: 80px 80px;
-  animation: snow-fall 6s linear infinite;
+    radial-gradient(circle, rgba(255,255,255,0.9) 2.5px, transparent 3.5px);
+  background-size: 70px 70px;
+  animation: snow-fall-front 6s linear infinite;
+  opacity: 0.45;
   will-change: transform;
   transform: translateZ(0);
-  opacity: 0.45;
 }
 
-@keyframes snow-fall {
+/* CAPA 2 – copos pequeños (fondo) */
+.snow-mobile::after {
+  content: "";
+  position: absolute;
+  inset: -120vh 0 0 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.6) 1.3px, transparent 2.5px);
+  background-size: 45px 45px;
+  animation: snow-fall-back 10s linear infinite;
+  opacity: 0.35;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ❄️ Animaciones */
+@keyframes snow-fall-front {
   from {
-    transform: translateY(0);
+    transform: translateY(0) translateX(0);
   }
   to {
-    transform: translateY(100vh);
+    transform: translateY(120vh) translateX(20px);
   }
 }
+
+@keyframes snow-fall-back {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(120vh) translateX(-15px);
+  }
+}
+
+/* 🧠 Respeta accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .snow-mobile::before,
+  .snow-mobile::after {
+    animation: none;
+  }
+                        }
