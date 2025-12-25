@@ -8,9 +8,9 @@ CONTENEDOR
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 130px;
-  padding-bottom: 30px;
-  padding-inline: 20px;
+  padding-top: 90px;        /* ⬅️ MENOS ESPACIO ARRIBA */
+  padding-bottom: 24px;     /* ⬅️ MENOS ESPACIO ABAJO */
+  padding-inline: 16px;
   position: relative;
   z-index: 10;
   color: #ffffff;
@@ -22,34 +22,42 @@ TÍTULO PRINCIPAL
 ========================= */
 .title {
   font-family: "Cinzel", serif;
-  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-size: clamp(2.2rem, 6.5vw, 3.8rem);
   font-weight: 700;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  margin: 0;                /* ⬅️ sin márgenes raros */
+  white-space: nowrap;      /* ⬅️ UNA SOLA LÍNEA */
 
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #fff6d5 40%,
-    #ffd700 70%,
+    #fff2c2 45%,
+    #ffd700 75%,
     #ffffff 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   text-shadow:
-    0 2px 8px rgba(255, 215, 0, 0.35),
-    0 0 18px rgba(255, 255, 255, 0.4);
+    0 2px 6px rgba(255, 215, 0, 0.35),
+    0 0 14px rgba(255, 255, 255, 0.4);
 
   animation: titleGlow 4s ease-in-out infinite;
 }
 
+/* Emojis del MISMO COLOR */
+.title span {
+  -webkit-text-fill-color: transparent;
+  background: inherit;
+}
+
+/* Brillo suave */
 @keyframes titleGlow {
   0%, 100% {
     filter: drop-shadow(0 0 6px rgba(255,215,0,0.35));
   }
   50% {
-    filter: drop-shadow(0 0 14px rgba(255,255,255,0.6));
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   }
 }
 
@@ -58,53 +66,53 @@ SUBTÍTULO
 ========================= */
 .subtitle {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  font-size: clamp(1.25rem, 4.5vw, 1.9rem);
   color: #ffe8a3;
-  margin-bottom: 26px;
+  margin-top: 6px;
+  margin-bottom: 22px;
   letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(255, 215, 150, 0.4);
+  text-shadow: 0 0 8px rgba(255, 215, 150, 0.4);
 }
 
 /* =========================
 TEXTOS
 ========================= */
 .message {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   opacity: 0.9;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .name {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  font-size: clamp(1.25rem, 4vw, 1.6rem);
   font-weight: 600;
   color: #ffdf7e;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   text-shadow:
-    0 0 6px rgba(255,223,126,0.6),
-    0 0 12px rgba(255,255,255,0.3);
+    0 0 5px rgba(255,223,126,0.6),
+    0 0 10px rgba(255,255,255,0.25);
 }
 
 .blessing {
   max-width: 600px;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.02rem;
+  line-height: 1.6;
   opacity: 0.95;
-  margin-top: 10px;
 }
 
 /* =========================
 FOOTER
 ========================= */
 .footer {
-  margin-top: 35px;
-  font-size: 0.95rem;
+  margin-top: 26px;
+  font-size: 0.9rem;
   opacity: 0.7;
   letter-spacing: 1px;
 }
 
 /* =========================
-NIEVE MÓVIL (DISEÑO PREMIUM)
+NIEVE MÓVIL
 ========================= */
 .snow-mobile {
   pointer-events: none;
@@ -141,20 +149,14 @@ NIEVE MÓVIL (DISEÑO PREMIUM)
 }
 
 @keyframes snow-fall-front {
-  from {
-    transform: translateY(0) translateX(0);
-  }
   to {
-    transform: translateY(120vh) translateX(20px);
+    transform: translateY(120vh) translateX(18px);
   }
 }
 
 @keyframes snow-fall-back {
-  from {
-    transform: translateY(0) translateX(0);
-  }
   to {
-    transform: translateY(120vh) translateX(-15px);
+    transform: translateY(120vh) translateX(-12px);
   }
 }
 
