@@ -16,7 +16,7 @@ export default function FireworksCanvas() {
     resize();
     window.addEventListener("resize", resize);
 
-    const explosions: any[] = [];
+    const explosions = [];
     const spawn = setInterval(() => {
       explosions.push({
         x: Math.random() * canvas.width,
@@ -26,14 +26,13 @@ export default function FireworksCanvas() {
       });
     }, 700);
 
-    let anim: number;
+    let anim;
     const animate = () => {
       anim = requestAnimationFrame(animate);
-
       ctx.fillStyle = "rgba(0,0,0,0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      explosions.forEach((e) => {
+      explosions.forEach(e => {
         ctx.beginPath();
         ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2);
         ctx.fillStyle = e.color;
@@ -41,7 +40,6 @@ export default function FireworksCanvas() {
         e.radius += 2;
       });
     };
-
     animate();
 
     return () => {
