@@ -4,7 +4,6 @@ import NewYear from "./pages/NewYear";
 import SnowCanvas from "./components/SnowCanvas";
 import Lights from "./components/Lights";
 import SantaFly from "./components/SantaFly";
-import MusicPlayer from "./components/MusicPlayer";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -13,7 +12,6 @@ export default function App() {
     <ThemeProvider>
       <BrowserRouter>
 
-        <MusicPlayer />
         <SnowCanvas />
         <Lights />
         <SantaFly />
