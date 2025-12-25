@@ -1,0 +1,34 @@
+.bulbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bulb {
+  width: 16px;
+  height: 24px;
+  background: red;
+  border-radius: 50%;
+  animation: blink 1s infinite alternate;
+}
+
+.bulb:nth-child(3n) {
+  background: green;
+}
+.bulb:nth-child(4n) {
+  background: yellow;
+}
+.bulb:nth-child(5n) {
+  background: blue;
+}
+
+@keyframes blink {
+  0% { opacity: .3; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
