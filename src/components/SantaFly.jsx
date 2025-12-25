@@ -8,16 +8,17 @@ export default function SantaFly() {
       alt="Santa volando"
       style={{
         position: "fixed",
-        top: "45%",
-        width: "140px",          // ⬅️ NO lo escales mucho
+        top: "80px",          // ⬆️ arriba, debajo de las luces
+        width: "120px",
         height: "auto",
-        zIndex: 2,
-        imageRendering: "auto", // 🔥 suavizado
-        filter: "drop-shadow(0 0 6px rgba(255,255,255,0.6))",
+        zIndex: 1,            // ⬅️ debajo del texto
         pointerEvents: "none",
+        imageRendering: "auto",
+        opacity: 0.95,
+        filter: "drop-shadow(0 0 4px rgba(255,255,255,0.5))",
       }}
-      animate={{ x: ["-200px", "110%"] }}
-      transition={{ duration: 10, repeat: Infinity, delay: 3 }}
+      animate={{ x: ["-150px", "110%"] }}
+      transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
     />
   );
 }
