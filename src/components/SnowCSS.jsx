@@ -1,3 +1,3 @@
 export default function SnowCSS() {
-  return <div className="snow" />;
+  return <div className="snow-mobile" />;
 }
