@@ -146,3 +146,77 @@ NIEVE (NO TOCAR)
 @keyframes snow-fall-back {
   to { transform: translateY(120vh); }
 }
+
+
+
+
+/* =========================
+ANIMACIÓN TÍTULO
+========================= */
+.title {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow:
+      0 0 6px rgba(255,215,0,0.4),
+      0 0 12px rgba(255,255,255,0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 12px rgba(255,215,0,0.9),
+      0 0 22px rgba(255,255,255,0.5);
+  }
+  100% {
+    text-shadow:
+      0 0 6px rgba(255,215,0,0.4),
+      0 0 12px rgba(255,255,255,0.2);
+  }
+}
+
+/* =========================
+LUCES NAVIDEÑAS
+========================= */
+.christmas-lights {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: blink 1.8s infinite;
+}
+
+.light.red { background: #ff4d4d; animation-delay: 0s; }
+.light.green { background: #4dff88; animation-delay: .3s; }
+.light.yellow { background: #ffe066; animation-delay: .6s; }
+.light.blue { background: #66ccff; animation-delay: .9s; }
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* =========================
+BOTÓN MÚSICA
+========================= */
+.music-btn {
+  margin-top: 16px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.music-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
