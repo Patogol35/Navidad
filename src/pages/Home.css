@@ -31,20 +31,20 @@ CONTENEDOR PRINCIPAL
 TARJETA CENTRAL
 ========================= */
 .home-card {
-  background: transparent; /* ✅ totalmente transparente */
-  backdrop-filter: blur(6px); /* mantiene efecto glass */
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.04); /* casi invisible */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
   border-radius: 20px;
   padding: 32px 28px;
   max-width: 560px;
-  margin-top: -20px;
   width: 100%;
   text-align: center;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.35),
-    inset 0 0 0 1px rgba(255,255,255,0.12);
-}
 
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+}
 /* =========================
 TÍTULO
 ========================= */
