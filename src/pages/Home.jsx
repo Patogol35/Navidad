@@ -4,9 +4,7 @@ export default function Home() {
   return (
     <div className="home-container">
       <h1 className="title">
-        Feliz Navidad
-        <span>🎄</span>
-        <span>🎅</span>
+        Feliz Navidad <span>🎄</span><span>🎅</span>
       </h1>
 
       <h2 className="subtitle">
