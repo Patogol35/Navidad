@@ -9,9 +9,9 @@ CONTENEDOR
   flex-direction: column;
   align-items: center;
 
-  padding-top: 100px;      /* equilibrado */
-  padding-bottom: 28px;
-  padding-inline: 22px;    /* ⬅️ NO PEGADO A BORDES */
+  padding-top: 90px;
+  padding-bottom: 24px;
+  padding-inline: 16px;
 
   position: relative;
   z-index: 10;
@@ -23,53 +23,49 @@ CONTENEDOR
 TÍTULO PRINCIPAL
 ========================= */
 .title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
   font-family: "Cinzel", serif;
-  font-size: clamp(2.3rem, 6.8vw, 3.9rem);
+  font-size: clamp(2.2rem, 6.5vw, 3.8rem);
   font-weight: 700;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.5px;
 
-  margin: 0;               /* ❌ sin márgenes raros */
-  line-height: 1.05;       /* ✅ CLAVE: elimina espacio abajo */
+  margin: 0;
+  line-height: 1.05;          /* 🔑 elimina espacio fantasma */
+  white-space: nowrap;
 
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #fff4cc 45%,
+    #fff2c2 45%,
     #ffd700 75%,
     #ffffff 100%
   );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   text-shadow:
-    0 1px 6px rgba(255, 215, 0, 0.3),
-    0 0 14px rgba(255, 255, 255, 0.35);
+    0 2px 6px rgba(255, 215, 0, 0.3),
+    0 0 12px rgba(255, 255, 255, 0.35);
 
   animation: titleGlow 4s ease-in-out infinite;
 }
 
-/* Brillo navideño suave */
+/* 🎄 Emojis CON COLOR REAL */
+.title span {
+  background: none;
+  -webkit-text-fill-color: initial;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  margin-left: 6px;
+}
+
+/* Brillo suave */
 @keyframes titleGlow {
   0%, 100% {
     filter: drop-shadow(0 0 6px rgba(255,215,0,0.35));
   }
   50% {
-    filter: drop-shadow(0 0 12px rgba(255,255,255,0.55));
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
   }
-}
-
-/* 🎄🎅 Emojis en COLOR ORIGINAL */
-.title .emoji {
-  font-size: 0.9em;
-  line-height: 1;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
-  -webkit-text-fill-color: initial;
-  background: none;
 }
 
 /* =========================
@@ -77,14 +73,14 @@ SUBTÍTULO
 ========================= */
 .subtitle {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.3rem, 4.8vw, 2rem);
-  color: #ffe6a3;
+  font-size: clamp(1.25rem, 4.5vw, 1.9rem);
+  color: #ffe8a3;
 
-  margin-top: 10px;        /* ⬅️ espacio justo */
-  margin-bottom: 24px;
+  margin-top: 8px;
+  margin-bottom: 22px;
 
   letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(255, 215, 150, 0.4);
+  text-shadow: 0 0 8px rgba(255, 215, 150, 0.4);
 }
 
 /* =========================
@@ -102,7 +98,7 @@ TEXTOS
   font-weight: 600;
   color: #ffdf7e;
 
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 
   text-shadow:
     0 0 5px rgba(255,223,126,0.6),
@@ -120,8 +116,64 @@ TEXTOS
 FOOTER
 ========================= */
 .footer {
-  margin-top: 30px;
+  margin-top: 26px;
   font-size: 0.9rem;
   opacity: 0.7;
   letter-spacing: 1px;
+}
+
+/* =========================
+NIEVE MÓVIL (NO TOCADA)
+========================= */
+.snow-mobile {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.snow-mobile::before {
+  content: "";
+  position: absolute;
+  inset: -120vh 0 0 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.9) 2.5px, transparent 3.5px);
+  background-size: 70px 70px;
+  animation: snow-fall-front 6s linear infinite;
+  opacity: 0.45;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.snow-mobile::after {
+  content: "";
+  position: absolute;
+  inset: -120vh 0 0 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.6) 1.3px, transparent 2.5px);
+  background-size: 45px 45px;
+  animation: snow-fall-back 10s linear infinite;
+  opacity: 0.35;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes snow-fall-front {
+  to {
+    transform: translateY(120vh) translateX(18px);
+  }
+}
+
+@keyframes snow-fall-back {
+  to {
+    transform: translateY(120vh) translateX(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snow-mobile::before,
+  .snow-mobile::after {
+    animation: none;
+  }
 }
