@@ -1,6 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap");
 
 /* =========================
+FONDO NAVIDEÑO
+========================= */
+body {
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 230, 180, 0.18),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #7a0d0d 0%,
+      #0f3d2e 45%,
+      #4b0c0c 100%
+    );
+  background-attachment: fixed;
+}
+
+/* =========================
 CONTENEDOR
 ========================= */
 .home-container {
@@ -10,7 +30,7 @@ CONTENEDOR
   align-items: center;
 
   padding-top: 90px;
-  padding-bottom: 24px;
+  padding-bottom: 26px;
   padding-inline: 16px;
 
   position: relative;
@@ -27,15 +47,14 @@ TÍTULO PRINCIPAL
   font-size: clamp(2.2rem, 6.5vw, 3.8rem);
   font-weight: 700;
   letter-spacing: 1.5px;
-
   margin: 0;
-  line-height: 1.05;          /* 🔑 elimina espacio fantasma */
+  line-height: 1.05;
   white-space: nowrap;
 
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #fff2c2 45%,
+    #fff1b8 40%,
     #ffd700 75%,
     #ffffff 100%
   );
@@ -44,18 +63,19 @@ TÍTULO PRINCIPAL
   -webkit-text-fill-color: transparent;
 
   text-shadow:
-    0 2px 6px rgba(255, 215, 0, 0.3),
-    0 0 12px rgba(255, 255, 255, 0.35);
+    0 2px 6px rgba(255, 215, 0, 0.35),
+    0 0 14px rgba(255, 255, 255, 0.35);
 
   animation: titleGlow 4s ease-in-out infinite;
 }
 
-/* 🎄 Emojis CON COLOR REAL */
+/* Emojis discretos y elegantes */
 .title span {
-  background: none;
-  -webkit-text-fill-color: initial;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  font-size: 0.9em;
   margin-left: 6px;
+  -webkit-text-fill-color: initial;
+  background: none;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.45));
 }
 
 /* Brillo suave */
@@ -75,12 +95,10 @@ SUBTÍTULO
   font-family: "Playfair Display", serif;
   font-size: clamp(1.25rem, 4.5vw, 1.9rem);
   color: #ffe8a3;
-
-  margin-top: 8px;
+  margin-top: 10px;
   margin-bottom: 22px;
-
   letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(255, 215, 150, 0.4);
+  text-shadow: 0 0 8px rgba(255, 215, 150, 0.45);
 }
 
 /* =========================
@@ -89,7 +107,7 @@ TEXTOS
 .message {
   font-size: 1.1rem;
   opacity: 0.9;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .name {
@@ -97,12 +115,10 @@ TEXTOS
   font-size: clamp(1.25rem, 4vw, 1.6rem);
   font-weight: 600;
   color: #ffdf7e;
-
   margin-bottom: 16px;
-
   text-shadow:
-    0 0 5px rgba(255,223,126,0.6),
-    0 0 10px rgba(255,255,255,0.25);
+    0 0 6px rgba(255,223,126,0.6),
+    0 0 12px rgba(255,255,255,0.25);
 }
 
 .blessing {
@@ -118,12 +134,12 @@ FOOTER
 .footer {
   margin-top: 26px;
   font-size: 0.9rem;
-  opacity: 0.7;
+  opacity: 0.75;
   letter-spacing: 1px;
 }
 
 /* =========================
-NIEVE MÓVIL (NO TOCADA)
+NIEVE (NO SE TOCA)
 ========================= */
 .snow-mobile {
   pointer-events: none;
