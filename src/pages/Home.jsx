@@ -52,12 +52,7 @@ export default function Home() {
             🎄
           </div>
 
-          {/* REGALOS */}
-          <div className="gifts">
-            <div className="gift">🎁</div>
-            <div className="gift">🎁</div>
-            <div className="gift">🎁</div>
-          </div>
+          
 
           {/* SUBTÍTULO */}
           <h2 className="subtitle">
