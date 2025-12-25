@@ -9,7 +9,9 @@ body {
   background:
     radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 40%),
     linear-gradient(180deg, #9c1f1f 0%, #5c0f0f 100%);
-  overflow: hidden;
+
+  overflow-y: auto;              /* ✅ permite arrastrar */
+  overscroll-behavior-y: auto;   /* ✅ habilita pull-to-refresh */
 }
 
 /* =========================
