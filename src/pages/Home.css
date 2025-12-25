@@ -1,23 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap");
 
 /* =========================
-FONDO NAVIDEÑO
+FONDO SIMPLE NAVIDEÑO
 ========================= */
 body {
   margin: 0;
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(255, 230, 180, 0.18),
-      transparent 55%
-    ),
-    linear-gradient(
-      180deg,
-      #7a0d0d 0%,
-      #0f3d2e 45%,
-      #4b0c0c 100%
-    );
-  background-attachment: fixed;
+  background: linear-gradient(
+    180deg,
+    #8b1d1d 0%,
+    #6f1515 100%
+  );
 }
 
 /* =========================
@@ -29,63 +21,38 @@ CONTENEDOR
   flex-direction: column;
   align-items: center;
 
-  padding-top: 90px;
-  padding-bottom: 26px;
+  padding-top: 72px;      /* ⬅️ compacto */
+  padding-bottom: 20px;
   padding-inline: 16px;
 
+  text-align: center;
+  color: #ffffff;
   position: relative;
   z-index: 10;
-  color: #ffffff;
-  text-align: center;
 }
 
 /* =========================
-TÍTULO PRINCIPAL
+TÍTULO
 ========================= */
 .title {
   font-family: "Cinzel", serif;
-  font-size: clamp(2.2rem, 6.5vw, 3.8rem);
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   margin: 0;
-  line-height: 1.05;
+  line-height: 1.1;
   white-space: nowrap;
 
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #fff1b8 40%,
-    #ffd700 75%,
-    #ffffff 100%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffd700;
 
   text-shadow:
-    0 2px 6px rgba(255, 215, 0, 0.35),
-    0 0 14px rgba(255, 255, 255, 0.35);
-
-  animation: titleGlow 4s ease-in-out infinite;
+    0 0 6px rgba(255, 215, 0, 0.45),
+    0 0 12px rgba(255, 255, 255, 0.25);
 }
 
-/* Emojis discretos y elegantes */
+/* Emojis normales */
 .title span {
-  font-size: 0.9em;
   margin-left: 6px;
-  -webkit-text-fill-color: initial;
-  background: none;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.45));
-}
-
-/* Brillo suave */
-@keyframes titleGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(255,215,0,0.35));
-  }
-  50% {
-    filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
-  }
 }
 
 /* =========================
@@ -93,38 +60,33 @@ SUBTÍTULO
 ========================= */
 .subtitle {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.25rem, 4.5vw, 1.9rem);
-  color: #ffe8a3;
-  margin-top: 10px;
-  margin-bottom: 22px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(255, 215, 150, 0.45);
+  font-size: clamp(1.2rem, 4.5vw, 1.7rem);
+  margin-top: 6px;
+  margin-bottom: 16px;
+  color: #ffe3a0;
 }
 
 /* =========================
 TEXTOS
 ========================= */
 .message {
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.9;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .name {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.25rem, 4vw, 1.6rem);
+  font-size: clamp(1.2rem, 4vw, 1.45rem);
   font-weight: 600;
   color: #ffdf7e;
-  margin-bottom: 16px;
-  text-shadow:
-    0 0 6px rgba(255,223,126,0.6),
-    0 0 12px rgba(255,255,255,0.25);
+  margin-bottom: 12px;
 }
 
 .blessing {
-  max-width: 600px;
-  font-size: 1.02rem;
-  line-height: 1.6;
+  max-width: 520px;
+  font-size: 1rem;
+  line-height: 1.55;
   opacity: 0.95;
 }
 
@@ -132,14 +94,13 @@ TEXTOS
 FOOTER
 ========================= */
 .footer {
-  margin-top: 26px;
-  font-size: 0.9rem;
-  opacity: 0.75;
-  letter-spacing: 1px;
+  margin-top: 18px;
+  font-size: 0.85rem;
+  opacity: 0.7;
 }
 
 /* =========================
-NIEVE (NO SE TOCA)
+NIEVE (NO TOCAR)
 ========================= */
 .snow-mobile {
   pointer-events: none;
@@ -159,7 +120,6 @@ NIEVE (NO SE TOCA)
   animation: snow-fall-front 6s linear infinite;
   opacity: 0.45;
   will-change: transform;
-  transform: translateZ(0);
 }
 
 .snow-mobile::after {
@@ -172,24 +132,12 @@ NIEVE (NO SE TOCA)
   animation: snow-fall-back 10s linear infinite;
   opacity: 0.35;
   will-change: transform;
-  transform: translateZ(0);
 }
 
 @keyframes snow-fall-front {
-  to {
-    transform: translateY(120vh) translateX(18px);
-  }
+  to { transform: translateY(120vh); }
 }
 
 @keyframes snow-fall-back {
-  to {
-    transform: translateY(120vh) translateX(-12px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .snow-mobile::before,
-  .snow-mobile::after {
-    animation: none;
-  }
+  to { transform: translateY(120vh); }
 }
