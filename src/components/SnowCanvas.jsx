@@ -18,43 +18,47 @@ export default function SnowCanvas() {
     window.addEventListener("resize", resize);
     window.addEventListener("orientationchange", resize);
 
-    const isMobile = window.innerWidth < 768;
+    const isMobile = width < 768;
+    const flakeCount = isMobile ? 90 : 140;
 
-    const shapes = ["❄️"]; // 🔥 SOLO UNO
-    const flakeCount = isMobile ? 45 : 70;
+    const flakes = Array.from({ length: flakeCount }).map(() => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.8 + 0.8,
+      speed: Math.random() * 0.6 + 0.4,
+      drift: Math.random() * 0.4 - 0.2
+    }));
 
-    const flakes = Array.from({ length: flakeCount }).map(() => {
-      const size = Math.random() * 3 + 1;
-      return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        size,
-        speed: Math.random() * 1.1 + 0.6,
-        shape: shapes[0],
-        font: `${size * 6}px serif`,
-      };
-    });
+    let animationId;
 
     const update = () => {
       ctx.clearRect(0, 0, width, height);
 
       flakes.forEach(f => {
-        ctx.font = f.font;
-        ctx.fillText(f.shape, f.x, f.y);
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+        ctx.fill();
+
         f.y += f.speed;
+        f.x += f.drift;
 
         if (f.y > height) {
-          f.y = -10;
+          f.y = -5;
           f.x = Math.random() * width;
         }
+
+        if (f.x > width) f.x = 0;
+        if (f.x < 0) f.x = width;
       });
 
-      requestAnimationFrame(update);
+      animationId = requestAnimationFrame(update);
     };
 
     update();
 
     return () => {
+      cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
       window.removeEventListener("orientationchange", resize);
     };
@@ -69,7 +73,7 @@ export default function SnowCanvas() {
         width: "100vw",
         height: "100vh",
         zIndex: 0,
-        pointerEvents: "none",
+        pointerEvents: "none"
       }}
     />
   );
