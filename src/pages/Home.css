@@ -1,114 +1,55 @@
 .home-container {
-  min-height: 100vh;                 
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  color: white;
   padding-top: 130px;
   padding-bottom: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
+  padding-inline: 20px;
   position: relative;
-  z-index: 10; /* ⬅️ contenido encima de la nieve */
+  z-index: 10;
+  color: white;
 }
 
 .title {
   font-size: clamp(2.2rem, 6vw, 3.8rem);
   font-weight: bold;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  text-align: center;
   text-shadow:
     0 0 10px rgba(255,255,255,0.6),
     0 0 25px rgba(255,0,0,0.5);
 }
 
-.glow {
-  animation: glow 3s ease-in-out infinite;
-}
-
-@keyframes glow {
-  0%, 100% {
-    text-shadow: 0 0 10px #fff, 0 0 25px #ff3c3c;
-  }
-  50% {
-    text-shadow: 0 0 20px #fff, 0 0 40px #ff8c00;
-  }
-}
-
 .subtitle {
   font-size: 1.7rem;
   margin-bottom: 25px;
-  letter-spacing: 1px;
-}
-
-.message {
-  font-size: 1.2rem;
-  margin-bottom: 5px;
-}
-
-.name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffdf7e;
-}
-
-.shine {
-  animation: shine 4s linear infinite;
-}
-
-@keyframes shine {
-  0% { text-shadow: 0 0 5px #ffdf7e; }
-  50% { text-shadow: 0 0 20px #fff3b0; }
-  100% { text-shadow: 0 0 5px #ffdf7e; }
 }
 
 .blessing {
-  font-size: 1.1rem;
   max-width: 600px;
-  margin-top: 20px;
   line-height: 1.6;
   opacity: 0.95;
 }
 
-.fade {
-  animation: fadeIn 2s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.footer {
-  margin-top: 30px;
-  opacity: 0.7;
-  font-size: 0.95rem;
-}
-
-
-
+/* ❄️ Nieve móvil */
 .snow {
   pointer-events: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; /* siempre detrás del contenido */
+  inset: 0;
+  z-index: -1;
   background-image:
     radial-gradient(circle, rgba(255,255,255,0.9) 2px, transparent 3px),
-    radial-gradient(circle, rgba(255,255,255,0.7) 1.5px, transparent 2.5px);
-  background-size: 100px 100px, 60px 60px;
-  background-position: 0 0, 30px 10px;
-  animation: snowMove 14s linear infinite;
-  opacity: 0.35;
+    radial-gradient(circle, rgba(255,255,255,0.6) 1.5px, transparent 2.5px);
+  background-size: 90px 90px, 55px 55px;
+  background-position: 0 0, 30px 20px;
+  animation: snowMove 8s linear infinite;
+  opacity: 0.5;
 }
 
 @keyframes snowMove {
-  0% { background-position: 0 -100px, 30px -60px; }
-  100% { background-position: 0 100vh, 30px 100vh; }
+  from {
+    background-position: 0 -100px, 30px -60px;
+  }
+  to {
+    background-position: 0 100vh, 30px 100vh;
+  }
 }
