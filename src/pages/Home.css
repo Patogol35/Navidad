@@ -1,15 +1,17 @@
 .home-container {
-  min-height: 100vh;
+  height: 100vh;                 /* ⬅️ altura exacta */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* ⬅️ ya no centrado vertical */
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   color: white;
-  padding-top: 140px;            /* ⬅️ espacio bajo las luces */
+  padding-top: 130px;            /* debajo de las luces */
+  padding-bottom: 20px;          /* ⬅️ mínimo abajo */
   padding-left: 20px;
   padding-right: 20px;
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .title {
@@ -87,7 +89,7 @@
 
 /* ❄️ FOOTER */
 .footer {
-  margin-top: 50px;
-  font-size: 0.95rem;
+  margin-top: auto;   /* 🔥 se pega abajo sin dejar huecos */
   opacity: 0.7;
-  }
+  font-size: 0.95rem;
+}
