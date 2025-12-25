@@ -1,26 +1,26 @@
-import { Link } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
   return (
     <div className="home-container">
-      <h1 className="title">🎄 ¡Feliz Navidad! 🎅</h1>
+      <h1 className="title">
+        🎄 Feliz Navidad 🎅
+      </h1>
 
-      <p className="subtitle">
-        Y un próspero 2026
-      </p>
+      <h2 className="subtitle">
+        y un próspero 2026
+      </h2>
 
       <p className="message">
-        Les desea <strong>Jorge Patricio Santamaría Cherrez</strong> ✨  
-        <br />
-        Que esta Navidad esté llena de paz, amor y esperanza ❤️
+        Les desea <br />
+        <span className="name">
+          Jorge Patricio Santamaría Cherrez
+        </span>
       </p>
 
-      <nav className="nav-menu">
-        <Link to="/nuevo-ano" className="btn-nav">
-          🎆 Recibir el Año Nuevo
-        </Link>
-      </nav>
+      <p className="blessing">
+        Que estas fiestas estén llenas de paz, amor y esperanza ✨
+      </p>
 
       <footer className="footer">
         ❄️ Felices Fiestas ❄️
