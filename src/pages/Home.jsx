@@ -17,13 +17,7 @@ export default function Home() {
       {/* NIEVE */}
       <div className="snow-mobile"></div>
 
-      {/* ESTRELLAS */}
-      <div className="floating-stars">
-        <div className="star">✨</div>
-        <div className="star">✨</div>
-        <div className="star">✨</div>
-        <div className="star">✨</div>
-      </div>
+      
 
       {/* MÚSICA */}
       <audio ref={audioRef} loop src="/christmas.mp3" />
