@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Home from "./pages/Home";
+import Game from "./pages/Game";
+import NewYear from "./pages/NewYear";
+import SnowCanvas from "./components/SnowCanvas";
+import Lights from "./components/Lights";
+import MusicPlayer from "./components/MusicPlayer";
+import ThemeButton from "./components/ThemeButton";
+import SantaFly from "./components/SantaFly";
+import { ThemeProvider } from "./context/ThemeContext";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [page, setPage] = useState("home");
+
+  const navBtn = (name, emoji) => (
+    <button onClick={() => setPage(name)}>{emoji} {name}</button>
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <ThemeProvider>
+      <SnowCanvas />
+      <SantaFly />
+      <Lights />
+      <MusicPlayer />
+      <ThemeButton />
 
-export default App
+      <motion.div
+        initial={{opacity:0, scale:0.8}}
+        animate={{opacity:1, scale:1}}
+        transition={{duration:0.4}}
+      >
+        <header style={{textAlign:"center", marginTop:20}}>
+          {navBtn("home","🎄")}
+          {navBtn("game","🎁")}
+          {navBtn("newyear","🎆")}
+        </header>
+
+        {page === "home" && <Home />}
+        {page === "game" && <Game />}
+        {page === "newyear" && <NewYear />}
+      </motion.div>
+    </ThemeProvider>
+  );
+}
