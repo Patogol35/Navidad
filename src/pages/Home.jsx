@@ -5,15 +5,16 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="card">
-        <h1 className="title">🎄 Feliz Navidad 🎅</h1>
+        <h1 className="title">🎄 ¡Feliz Navidad! 🎅</h1>
 
         <p className="subtitle">
-          Que la magia de la Navidad llene tu hogar de paz, amor y esperanza ✨
+          Y un próspero 2026
         </p>
 
         <p className="message">
-          Disfruta las luces, la nieve y la música 🎶  
-          Hecho con React y mucho espíritu navideño ❤️
+          Les desea <strong>Jorge Patricio Santamaría Cherrez</strong> ✨  
+          <br />
+          Que esta Navidad esté llena de paz, amor y esperanza ❤️
         </p>
 
         <nav className="nav-menu">
