@@ -7,11 +7,11 @@ export default function SnowCanvas() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    let w, h;
+    let width, height;
 
     const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
     };
 
     resize();
@@ -19,39 +19,35 @@ export default function SnowCanvas() {
     window.addEventListener("orientationchange", resize);
 
     const isMobile = window.innerWidth < 768;
-    const flakeCount = isMobile ? 120 : 200;
 
-    const flakes = Array.from({ length: flakeCount }).map(() => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 2 + 1,
-      speed: Math.random() * 1.2 + 0.5,
-      drift: Math.random() * 0.6 - 0.3,
-      opacity: Math.random() * 0.5 + 0.5,
-    }));
+    const shapes = ["❄️", "✦", "✧", "✺"];
+    const flakeCount = isMobile ? 90 : 140;
 
-    const drawFlake = (f) => {
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${f.opacity})`;
-      ctx.fill();
-    };
+    const flakes = Array.from({ length: flakeCount }).map(() => {
+      const size = Math.random() * 3 + 1;
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size,
+        speed: Math.random() * 1.2 + 0.6,
+        shape: shapes[Math.floor(Math.random() * shapes.length)],
+        font: `${size * 6}px serif`, // 🔥 se calcula UNA sola vez
+      };
+    });
 
     const update = () => {
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, width, height);
 
       flakes.forEach(f => {
-        drawFlake(f);
+        ctx.font = f.font;
+        ctx.fillText(f.shape, f.x, f.y);
 
         f.y += f.speed;
-        f.x += f.drift;
 
-        if (f.y > h) {
-          f.y = -5;
-          f.x = Math.random() * w;
+        if (f.y > height) {
+          f.y = -10;
+          f.x = Math.random() * width;
         }
-        if (f.x > w) f.x = 0;
-        if (f.x < 0) f.x = w;
       });
 
       requestAnimationFrame(update);
@@ -73,8 +69,8 @@ export default function SnowCanvas() {
         inset: 0,
         width: "100vw",
         height: "100vh",
-        pointerEvents: "none",
         zIndex: 0,
+        pointerEvents: "none",
       }}
     />
   );
